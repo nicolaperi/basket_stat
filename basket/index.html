@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Basket Analytics — Demo</title>
+  <base href="./">
+  <link rel="stylesheet" href="assets/styles.css">
+  <!-- favicon is optional; avoid 404s if missing -->
+  <!-- <link rel="icon" href="favicon.ico" /> -->
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="app__header">
+      <h1 class="app__title">Basket Analytics — Demo</h1>
+    </header>
+    <main id="view" class="app__view"></main>
+    <footer class="app__footer footer-note">Apri questa pagina in un browser moderno. Usa "Carica dati demo" dalla Home per popolare il DB.</footer>
+  </div>
+
+  <noscript>
+    <div style="padding:12px;background:#200;color:#fff">Questa applicazione richiede JavaScript per funzionare.</div>
+  </noscript>
+
+  <script type="module">
+    // Avvia router principale (moduli ES importati dal file router)
+    (async ()=>{
+      try{
+        await import('./src/ui/router.js');
+      }catch(err){
+        const view = document.getElementById('view');
+        if(view) view.innerHTML = `<div class="card">Errore caricamento moduli: ${String(err.message || err)}</div>`;
+        console.error('module load error',err);
+      }
+    })();
+  </script>
+</body>
+</html>

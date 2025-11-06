@@ -1,0 +1,13 @@
+{
+  "name": "basket-backup-server",
+  "version": "1.0.0",
+  "description": "Static server + backup endpoint for Basket Analytics demo",
+  "main": "backup_server.js",
+  "scripts": {
+    "start": "node backup_server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2"
+  }
+}
