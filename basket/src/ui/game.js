@@ -14,6 +14,17 @@ export async function renderGame(container, params={}){
   const card = el('div','card');
   card.appendChild(el('h2',null,'Configura nuova partita'));
 
+  // form per avversario
+  const opponentForm = el('div','col');
+  const opponentLabel = el('label',null,'Nome squadra avversaria:');
+  const opponentInp = document.createElement('input'); 
+  opponentInp.placeholder='Inserisci nome avversario (es. Lakers, Virtus Bologna...)';
+  opponentInp.value = 'Sconosciuto'; // valore di default
+  opponentInp.style.marginBottom = '15px';
+  opponentForm.appendChild(opponentLabel); 
+  opponentForm.appendChild(opponentInp);
+  card.appendChild(opponentForm);
+
   // selection info
   const info = el('div',null,`Seleziona fino a 12 giocatori per la partita (al momento: ${players.length} salvati)`);
   card.appendChild(info);
@@ -69,7 +80,8 @@ export async function renderGame(container, params={}){
 
   renderPlayers();
 
-  addBtn.onclick = async ()=>{
+  // Aggiungi listener per il tasto Enter sui campi di input per aggiungere giocatore
+  const handleAddPlayer = async ()=>{
     const name = nameInp.value && nameInp.value.trim();
     const num = numInp.value && String(numInp.value).trim();
     if(!name){ toast('Inserisci il nome'); return; }
@@ -89,12 +101,31 @@ export async function renderGame(container, params={}){
     nameInp.value=''; numInp.value='';
   };
 
+  addBtn.onclick = handleAddPlayer;
+
+  // Aggiungi shortcut Enter per aggiungere giocatore
+  nameInp.addEventListener('keypress', (e)=>{
+    if(e.key === 'Enter') handleAddPlayer();
+  });
+  numInp.addEventListener('keypress', (e)=>{
+    if(e.key === 'Enter') handleAddPlayer();
+  });
+
+  // Aggiungi supporto Enter per campo avversario (focus su nome giocatore)
+  opponentInp.addEventListener('keypress', (e)=>{
+    if(e.key === 'Enter') {
+      nameInp.focus();
+      e.preventDefault();
+    }
+  });
+
   cancelBtn.onclick = ()=>{ window.appNavigate('home'); };
 
   finishBtn.onclick = async ()=>{
     // save a new game with currently selected roster (even if <12)
     const roster = Array.from(selected);
-    const game = {id:'game_'+Date.now(),dateISO:new Date().toISOString(),opponent:'Sconosciuto',venue:'home',roster,quarters:4,notes:'partita salvata'};
+    const opponentName = opponentInp.value.trim() || 'Sconosciuto';
+    const game = {id:'game_'+Date.now(),dateISO:new Date().toISOString(),opponent:opponentName,venue:'home',roster,quarters:4,notes:'partita salvata'};
     await storage.createGame(game);
     toast('Partita salvata');
     window.appNavigate('home');
@@ -103,7 +134,8 @@ export async function renderGame(container, params={}){
   startBtn.onclick = async ()=>{
     const roster = Array.from(selected);
     if(roster.length < 6 || roster.length > 12){ toast('Devi selezionare tra 6 e 12 giocatori per iniziare'); return; }
-    const game = {id:'game_'+Date.now(),dateISO:new Date().toISOString(),opponent:'Sconosciuto',venue:'home',roster,quarters:4,notes:'partita in corso'};
+    const opponentName = opponentInp.value.trim() || 'Sconosciuto';
+    const game = {id:'game_'+Date.now(),dateISO:new Date().toISOString(),opponent:opponentName,venue:'home',roster,quarters:4,notes:'partita in corso'};
     await storage.createGame(game);
     const state = createGameState(game);
     renderLive(container,state,players);
@@ -258,6 +290,183 @@ function renderLive(container,state,players){
     window.appNavigate('home');
   };
   controlsCard.appendChild(endBtn);
+
+  // Sistema di shortcut da tastiera
+  const keyboardHandler = (e) => {
+    // Ignora se l'utente sta scrivendo in un input
+    if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    
+    // Controlla se c'è un giocatore selezionato per le azioni
+    const needsPlayer = ['1', '2', '3', '4', '5', '6', 'q', 'w', 'e', 'r', 't', 'y'];
+    if(needsPlayer.includes(e.key.toLowerCase()) && !selectedPlayer) {
+      toast('Seleziona un giocatore del quintetto prima di registrare un evento');
+      e.preventDefault();
+      return;
+    }
+
+    let eventType = null;
+    let actionDescription = '';
+
+    switch(e.key.toLowerCase()) {
+      // Tiri liberi
+      case '1':
+        eventType = 'FT_MADE';
+        actionDescription = 'Tiro libero segnato';
+        break;
+      case '2':
+        eventType = 'FT_MISS';
+        actionDescription = 'Tiro libero sbagliato';
+        break;
+      
+      // Tiri da 2 punti
+      case '3':
+        eventType = '2PT_MADE';
+        actionDescription = '2 punti segnato';
+        break;
+      case '4':
+        eventType = '2PT_MISS';
+        actionDescription = '2 punti sbagliato';
+        break;
+      
+      // Tiri da 3 punti
+      case '5':
+        eventType = '3PT_MADE';
+        actionDescription = '3 punti segnato';
+        break;
+      case '6':
+        eventType = '3PT_MISS';
+        actionDescription = '3 punti sbagliato';
+        break;
+      
+      // Rimbalzi
+      case 'q':
+        eventType = 'OREB';
+        actionDescription = 'Rimbalzo offensivo';
+        break;
+      case 'w':
+        eventType = 'DREB';
+        actionDescription = 'Rimbalzo difensivo';
+        break;
+      
+      // Altre azioni
+      case 'e':
+        eventType = 'ASSIST';
+        actionDescription = 'Assist';
+        break;
+      case 'r':
+        eventType = 'TURNOVER';
+        actionDescription = 'Palla persa';
+        break;
+      case 't':
+        eventType = 'FOUL';
+        actionDescription = 'Fallo';
+        break;
+      case 'y':
+        eventType = 'STEAL';
+        actionDescription = 'Palla rubata';
+        break;
+      
+      // Controlli cronometro
+      case ' ': // Spazio
+        e.preventDefault();
+        if(state.running) {
+          pauseClock(state);
+          if(rafId){ cancelAnimationFrame(rafId); rafId=null; }
+          toast('Cronometro in pausa');
+        } else {
+          startClock(state);
+          if(!rafId) updateClock();
+          toast('Cronometro avviato');
+        }
+        return;
+      
+      case 's':
+        startClock(state);
+        if(!rafId) updateClock();
+        toast('Cronometro avviato');
+        e.preventDefault();
+        return;
+      
+      case 'p':
+        pauseClock(state);
+        if(rafId){ cancelAnimationFrame(rafId); rafId=null; }
+        toast('Cronometro in pausa');
+        e.preventDefault();
+        return;
+    }
+
+    // Se è stata identificata un'azione, registrala
+    if(eventType && selectedPlayer) {
+      e.preventDefault();
+      const evt = {
+        gameId: state.game.id,
+        playerId: selectedPlayer,
+        team: 'us',
+        tsMs: Date.now(),
+        period: state.period,
+        onCourt: true,
+        type: eventType,
+        meta: {}
+      };
+      
+      addEvent(state, evt).then(() => {
+        refreshEvents();
+        toast(`${actionDescription} registrato`);
+      }).catch(err => {
+        console.warn('Errore nel registrare evento:', err);
+        toast('Errore nel registrare evento');
+      });
+    }
+  };
+
+  // Aggiungi il listener per i tasti
+  document.addEventListener('keydown', keyboardHandler);
+
+  // Cleanup del listener quando si esce dalla partita
+  const originalNavigate = window.appNavigate;
+  window.appNavigate = (...args) => {
+    document.removeEventListener('keydown', keyboardHandler);
+    window.appNavigate = originalNavigate;
+    return originalNavigate(...args);
+  };
+  
+  // Mostra la guida shortcuts
+  const shortcutsCard = el('div', 'card');
+  shortcutsCard.innerHTML = `
+    <h4>Shortcuts da tastiera</h4>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 12px;">
+      <div><strong>Azioni giocatori:</strong></div>
+      <div><strong>Controlli:</strong></div>
+      <div>1 = Tiro libero ✓</div>
+      <div>SPAZIO = Play/Pausa</div>
+      <div>2 = Tiro libero ✗</div>
+      <div>S = Start cronometro</div>
+      <div>3 = 2 punti ✓</div>
+      <div>P = Pausa cronometro</div>
+      <div>4 = 2 punti ✗</div>
+      <div></div>
+      <div>5 = 3 punti ✓</div>
+      <div><strong>Altri:</strong></div>
+      <div>6 = 3 punti ✗</div>
+      <div>ENTER = Aggiungi giocatore</div>
+      <div>Q = Rimbalzo off.</div>
+      <div></div>
+      <div>W = Rimbalzo dif.</div>
+      <div></div>
+      <div>E = Assist</div>
+      <div></div>
+      <div>R = Palla persa</div>
+      <div></div>
+      <div>T = Fallo</div>
+      <div></div>
+      <div>Y = Palla rubata</div>
+      <div></div>
+    </div>
+    <small style="color: #666; margin-top: 10px; display: block;">
+      * Seleziona prima un giocatore in campo per registrare le azioni
+    </small>
+  `;
+  container.appendChild(shortcutsCard);
 
 }
 
