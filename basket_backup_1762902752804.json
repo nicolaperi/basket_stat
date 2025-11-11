@@ -1,0 +1,1008 @@
+{
+  "meta": {
+    "exportedAt": "2025-11-11T23:12:32.802Z"
+  },
+  "stores": {
+    "players": [
+      {
+        "name": "Baro",
+        "jerseyNumber": "6",
+        "id": "player_5apo76x"
+      },
+      {
+        "name": "Mine",
+        "jerseyNumber": "17",
+        "id": "player_8v2zv3t"
+      },
+      {
+        "name": "Mr. Pio",
+        "jerseyNumber": "7",
+        "id": "player_8xqedxj"
+      },
+      {
+        "name": "Fede",
+        "jerseyNumber": "2",
+        "id": "player_i4c4t7p"
+      },
+      {
+        "name": "Giovuzzo",
+        "jerseyNumber": "95",
+        "id": "player_u6toutp"
+      },
+      {
+        "name": "sashimi",
+        "jerseyNumber": "0",
+        "id": "player_vurkgcu"
+      }
+    ],
+    "games": [
+      {
+        "id": "game_1762467021968",
+        "dateISO": "2025-11-06T22:10:21.968Z",
+        "opponent": "sdengers",
+        "venue": "home",
+        "roster": [
+          "player_5apo76x",
+          "player_8v2zv3t",
+          "player_8xqedxj",
+          "player_i4c4t7p",
+          "player_u6toutp",
+          "player_vurkgcu"
+        ],
+        "quarters": 4,
+        "notes": "partita in corso"
+      },
+      {
+        "id": "game_1762467153359",
+        "dateISO": "2025-11-06T22:12:33.359Z",
+        "opponent": "Sconosciuto",
+        "venue": "home",
+        "roster": [
+          "player_5apo76x",
+          "player_8v2zv3t",
+          "player_8xqedxj",
+          "player_i4c4t7p",
+          "player_u6toutp",
+          "player_vurkgcu"
+        ],
+        "quarters": 4,
+        "notes": "partita in corso"
+      },
+      {
+        "id": "game_1762901017003",
+        "dateISO": "2025-11-11T22:43:37.003Z",
+        "opponent": "Sconosciuto",
+        "venue": "home",
+        "roster": [
+          "player_5apo76x",
+          "player_8v2zv3t",
+          "player_8xqedxj",
+          "player_i4c4t7p",
+          "player_u6toutp",
+          "player_vurkgcu"
+        ],
+        "quarters": 4,
+        "notes": "partita in corso"
+      },
+      {
+        "id": "game_1762902714866",
+        "dateISO": "2025-11-11T23:11:54.866Z",
+        "opponent": "Sconosciuto",
+        "venue": "home",
+        "roster": [
+          "player_5apo76x",
+          "player_8v2zv3t",
+          "player_8xqedxj",
+          "player_i4c4t7p",
+          "player_u6toutp",
+          "player_vurkgcu"
+        ],
+        "quarters": 4,
+        "notes": "partita in corso"
+      }
+    ],
+    "events": [
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901196127,
+        "period": 1,
+        "onCourt": true,
+        "type": "FT_MADE",
+        "meta": {},
+        "id": "evt_0dkzskq"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901213429,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MADE",
+        "meta": {},
+        "id": "evt_0k2o4le"
+      },
+      {
+        "gameId": "game_1762902714866",
+        "playerId": "player_5apo76x",
+        "team": "us",
+        "tsMs": 1762902726749,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_1bhx9eg"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901194926,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MADE",
+        "meta": {},
+        "id": "evt_1qzfrhv"
+      },
+      {
+        "gameId": "game_1762902714866",
+        "playerId": "player_i4c4t7p",
+        "team": "us",
+        "tsMs": 1762902722820,
+        "period": 1,
+        "onCourt": true,
+        "type": "FT_MISS",
+        "meta": {},
+        "id": "evt_2b2osen"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_5apo76x",
+        "team": "us",
+        "tsMs": 1762901202265,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_32pv0u6"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901190344,
+        "period": 1,
+        "onCourt": true,
+        "type": "FT_MISS",
+        "meta": {},
+        "id": "evt_3x3ku3e"
+      },
+      {
+        "gameId": "game_1762902714866",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762902750413,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MISS",
+        "meta": {},
+        "id": "evt_53ezgd2"
+      },
+      {
+        "gameId": "game_1762902714866",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762902731149,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_59ruk9b"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901194686,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MADE",
+        "meta": {},
+        "id": "evt_6834y32"
+      },
+      {
+        "gameId": "game_1762467153359",
+        "playerId": "player_5apo76x",
+        "team": "us",
+        "tsMs": 1762467160054,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MISS",
+        "meta": {},
+        "id": "evt_71g60c2"
+      },
+      {
+        "gameId": "game_1762902714866",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762902731150,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_74efdb8"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_5apo76x",
+        "team": "us",
+        "tsMs": 1762901201168,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_7qiti78"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_u6toutp",
+        "team": "us",
+        "tsMs": 1762901197806,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_8lxvloe"
+      },
+      {
+        "gameId": "game_1762902714866",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762902749834,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MISS",
+        "meta": {},
+        "id": "evt_8q7fm78"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8v2zv3t",
+        "team": "us",
+        "tsMs": 1762901195579,
+        "period": 1,
+        "onCourt": true,
+        "type": "FT_MISS",
+        "meta": {},
+        "id": "evt_9jlhley"
+      },
+      {
+        "gameId": "game_1762467021968",
+        "playerId": "player_i4c4t7p",
+        "team": "us",
+        "tsMs": 1762467060530,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_9ssedar"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_i4c4t7p",
+        "team": "us",
+        "tsMs": 1762901192339,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MADE",
+        "meta": {},
+        "id": "evt_9wwkcsg"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_u6toutp",
+        "team": "us",
+        "tsMs": 1762901206116,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_ackr8la"
+      },
+      {
+        "gameId": "game_1762467153359",
+        "playerId": "player_5apo76x",
+        "team": "us",
+        "tsMs": 1762467159288,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_ap4jb8p"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901213609,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MADE",
+        "meta": {},
+        "id": "evt_b6axtuy"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_u6toutp",
+        "team": "us",
+        "tsMs": 1762901197589,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_c5897t2"
+      },
+      {
+        "gameId": "game_1762467153359",
+        "playerId": "player_8v2zv3t",
+        "team": "us",
+        "tsMs": 1762467157144,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_cein8rf"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901194461,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MADE",
+        "meta": {},
+        "id": "evt_d3mv7q8"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8v2zv3t",
+        "team": "us",
+        "tsMs": 1762901054153,
+        "period": 1,
+        "onCourt": true,
+        "type": "FT_MADE",
+        "meta": {},
+        "id": "evt_dpkb4dg"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_5apo76x",
+        "team": "us",
+        "tsMs": 1762901200784,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_drmvm7w"
+      },
+      {
+        "gameId": "game_1762467021968",
+        "playerId": "player_5apo76x",
+        "team": "us",
+        "tsMs": 1762467043648,
+        "period": 1,
+        "onCourt": true,
+        "type": "FT_MADE",
+        "meta": {},
+        "id": "evt_ekzugsj"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_i4c4t7p",
+        "team": "us",
+        "tsMs": 1762901198318,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_ga41k0w"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901196622,
+        "period": 1,
+        "onCourt": true,
+        "type": "FT_MADE",
+        "meta": {},
+        "id": "evt_glyzprv"
+      },
+      {
+        "gameId": "game_1762467021968",
+        "playerId": "player_vurkgcu",
+        "tsMs": 1762467063116,
+        "period": 1,
+        "type": "SUB_IN",
+        "meta": {
+          "out": "player_u6toutp"
+        },
+        "id": "evt_gnhtnql"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_i4c4t7p",
+        "team": "us",
+        "tsMs": 1762901210324,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_h0q9fv7"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_5apo76x",
+        "team": "us",
+        "tsMs": 1762901034905,
+        "period": 1,
+        "onCourt": true,
+        "type": "FT_MADE",
+        "meta": {},
+        "id": "evt_h9hsf3v"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_i4c4t7p",
+        "team": "us",
+        "tsMs": 1762901204204,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_hpum8ve"
+      },
+      {
+        "gameId": "game_1762902714866",
+        "playerId": "player_5apo76x",
+        "team": "us",
+        "tsMs": 1762902725200,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_hx5qv4y"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901229862,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_igaa44p"
+      },
+      {
+        "gameId": "game_1762467021968",
+        "playerId": "player_5apo76x",
+        "team": "us",
+        "tsMs": 1762467046949,
+        "period": 1,
+        "onCourt": true,
+        "type": "FT_MISS",
+        "meta": {},
+        "id": "evt_imjnsqa"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8v2zv3t",
+        "team": "us",
+        "tsMs": 1762901203281,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_isw75c1"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901194229,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MADE",
+        "meta": {},
+        "id": "evt_j1wk58g"
+      },
+      {
+        "gameId": "game_1762467153359",
+        "playerId": "player_u6toutp",
+        "team": "us",
+        "tsMs": 1762467164302,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_kcx6bb7"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901203717,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_kem4cwe"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_i4c4t7p",
+        "team": "us",
+        "tsMs": 1762901053289,
+        "period": 1,
+        "onCourt": true,
+        "type": "FT_MISS",
+        "meta": {},
+        "id": "evt_l2xaed6"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_i4c4t7p",
+        "team": "us",
+        "tsMs": 1762901211823,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MADE",
+        "meta": {},
+        "id": "evt_l6qdmyt"
+      },
+      {
+        "gameId": "game_1762902714866",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762902734626,
+        "period": 1,
+        "onCourt": true,
+        "type": "FT_MISS",
+        "meta": {},
+        "id": "evt_na61b9d"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8v2zv3t",
+        "team": "us",
+        "tsMs": 1762901051428,
+        "period": 1,
+        "onCourt": true,
+        "type": "FT_MADE",
+        "meta": {},
+        "id": "evt_nevk0eh"
+      },
+      {
+        "gameId": "game_1762467153359",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762467161683,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_ngrpvod"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_u6toutp",
+        "team": "us",
+        "tsMs": 1762901197372,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_no8yxgi"
+      },
+      {
+        "gameId": "game_1762902714866",
+        "playerId": "player_5apo76x",
+        "team": "us",
+        "tsMs": 1762902724945,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_nowsmbh"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_u6toutp",
+        "team": "us",
+        "tsMs": 1762901204767,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_nqabdz9"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901190824,
+        "period": 1,
+        "onCourt": true,
+        "type": "FT_MISS",
+        "meta": {},
+        "id": "evt_ns5a0ox"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901213797,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MADE",
+        "meta": {},
+        "id": "evt_nue343l"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_5apo76x",
+        "team": "us",
+        "tsMs": 1762901200972,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_oyiwhem"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_i4c4t7p",
+        "team": "us",
+        "tsMs": 1762901198534,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_qfohaeo"
+      },
+      {
+        "gameId": "game_1762467021968",
+        "playerId": "player_vurkgcu",
+        "team": "us",
+        "tsMs": 1762467067855,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MADE",
+        "meta": {},
+        "id": "evt_r4zocnz"
+      },
+      {
+        "gameId": "game_1762902714866",
+        "playerId": "player_i4c4t7p",
+        "team": "us",
+        "tsMs": 1762902723122,
+        "period": 1,
+        "onCourt": true,
+        "type": "FT_MISS",
+        "meta": {},
+        "id": "evt_rcuz75x"
+      },
+      {
+        "gameId": "game_1762467153359",
+        "playerId": "player_5apo76x",
+        "team": "us",
+        "tsMs": 1762467155973,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_rdd07ck"
+      },
+      {
+        "gameId": "game_1762902714866",
+        "playerId": "player_5apo76x",
+        "team": "us",
+        "tsMs": 1762902726454,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_rk6tl3d"
+      },
+      {
+        "gameId": "game_1762467153359",
+        "playerId": "player_8v2zv3t",
+        "team": "us",
+        "tsMs": 1762467157859,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_rkmimf0"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8v2zv3t",
+        "team": "us",
+        "tsMs": 1762901201558,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MADE",
+        "meta": {},
+        "id": "evt_s79tij3"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_u6toutp",
+        "team": "us",
+        "tsMs": 1762901205937,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_skx0md4"
+      },
+      {
+        "gameId": "game_1762902714866",
+        "playerId": "player_8v2zv3t",
+        "team": "us",
+        "tsMs": 1762902720744,
+        "period": 1,
+        "onCourt": true,
+        "type": "FT_MADE",
+        "meta": {},
+        "id": "evt_tlnd912"
+      },
+      {
+        "gameId": "game_1762467021968",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762467053172,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_tqf2p6l"
+      },
+      {
+        "gameId": "game_1762467153359",
+        "playerId": "player_5apo76x",
+        "team": "us",
+        "tsMs": 1762467159697,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_tr0q7n0"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8v2zv3t",
+        "team": "us",
+        "tsMs": 1762901203072,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_tzo27fo"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901194034,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MADE",
+        "meta": {},
+        "id": "evt_u2h3dh8"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901230079,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_uvwo8p4"
+      },
+      {
+        "gameId": "game_1762467153359",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762467162651,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_vci8fel"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8v2zv3t",
+        "team": "us",
+        "tsMs": 1762901202847,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_vdakisw"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901193816,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MADE",
+        "meta": {},
+        "id": "evt_vm8m2eh"
+      },
+      {
+        "gameId": "game_1762902714866",
+        "playerId": "player_5apo76x",
+        "team": "us",
+        "tsMs": 1762902726059,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_w0w6nq7"
+      },
+      {
+        "gameId": "game_1762467021968",
+        "playerId": "player_i4c4t7p",
+        "team": "us",
+        "tsMs": 1762467057910,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_we66d4m"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_i4c4t7p",
+        "team": "us",
+        "tsMs": 1762901191702,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MADE",
+        "meta": {},
+        "id": "evt_xummyfc"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901195174,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MADE",
+        "meta": {},
+        "id": "evt_xv2tiw0"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_8xqedxj",
+        "team": "us",
+        "tsMs": 1762901229676,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_ygag3ir"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_i4c4t7p",
+        "team": "us",
+        "tsMs": 1762901214607,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MISS",
+        "meta": {},
+        "id": "evt_zdtalc3"
+      },
+      {
+        "gameId": "game_1762467021968",
+        "playerId": "player_u6toutp",
+        "tsMs": 1762467063116,
+        "period": 1,
+        "type": "SUB_OUT",
+        "meta": {
+          "in": "player_vurkgcu"
+        },
+        "id": "evt_zsolz83"
+      },
+      {
+        "gameId": "game_1762901017003",
+        "playerId": "player_i4c4t7p",
+        "team": "us",
+        "tsMs": 1762901191965,
+        "period": 1,
+        "onCourt": true,
+        "type": "2PT_MADE",
+        "meta": {},
+        "id": "evt_zvc6bdi"
+      },
+      {
+        "gameId": "game_1762902714866",
+        "playerId": "player_u6toutp",
+        "team": "us",
+        "tsMs": 1762902729197,
+        "period": 1,
+        "onCourt": true,
+        "type": "3PT_MADE",
+        "meta": {},
+        "id": "evt_zxk3h03"
+      }
+    ],
+    "lineups": [
+      {
+        "id": "lineup_0gz8hn5",
+        "gameId": "game_1762901017003",
+        "playedMs": {
+          "player_5apo76x": 0,
+          "player_8v2zv3t": 0,
+          "player_8xqedxj": 0,
+          "player_i4c4t7p": 0,
+          "player_u6toutp": 0,
+          "player_vurkgcu": 0
+        },
+        "ts": "2025-11-11T22:47:13.726Z"
+      },
+      {
+        "id": "lineup_5ydk1ea",
+        "gameId": "game_1762467153359",
+        "playedMs": {
+          "player_5apo76x": 0,
+          "player_8v2zv3t": 0,
+          "player_8xqedxj": 0,
+          "player_i4c4t7p": 0,
+          "player_u6toutp": 0,
+          "player_vurkgcu": 0
+        },
+        "ts": "2025-11-06T22:12:51.260Z"
+      },
+      {
+        "id": "lineup_cnfdkao",
+        "gameId": "game_1762902714866",
+        "playedMs": {
+          "player_5apo76x": 0,
+          "player_8v2zv3t": 0,
+          "player_8xqedxj": 0,
+          "player_i4c4t7p": 0,
+          "player_u6toutp": 0,
+          "player_vurkgcu": 0
+        },
+        "ts": "2025-11-11T23:12:32.789Z"
+      },
+      {
+        "id": "lineup_czuy2f6",
+        "gameId": "game_1762467021968",
+        "playedMs": {
+          "player_5apo76x": 11477,
+          "player_8v2zv3t": 11477,
+          "player_8xqedxj": 11477,
+          "player_i4c4t7p": 11477,
+          "player_u6toutp": 0,
+          "player_vurkgcu": 11477
+        },
+        "ts": "2025-11-06T22:11:43.479Z"
+      }
+    ]
+  }
+}
