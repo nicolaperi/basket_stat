@@ -170,8 +170,14 @@ function renderLive(container,state,players){
   const clock = el('div','clock',formatMs(0));
   controlsCard.appendChild(q); controlsCard.appendChild(clock);
   const controls = el('div','toolbar');
-  const bStart = el('button','btn','Avvia'); const bPause = el('button','btn--muted','Pausa'); const bNext = el('button','btn','Next Period');
-  controls.appendChild(bStart); controls.appendChild(bPause); controls.appendChild(bNext);
+  const bStart = el('button','btn','Avvia'); 
+  const bPause = el('button','btn--muted','Pausa'); 
+  const bNext = el('button','btn','Next Period');
+  const bUndo = el('button','btn--muted','↶ Annulla azione');
+  controls.appendChild(bStart); 
+  controls.appendChild(bPause); 
+  controls.appendChild(bNext);
+  controls.appendChild(bUndo);
   controlsCard.appendChild(controls);
 
   // quick actions
@@ -207,6 +213,17 @@ function renderLive(container,state,players){
   bStart.onclick = ()=>{ startClock(state); if(!rafId) updateClock(); toast('Cronometro avviato'); };
   bPause.onclick = ()=>{ pauseClock(state); if(rafId){ cancelAnimationFrame(rafId); rafId=null; } toast('Cronometro in pausa'); };
   bNext.onclick = ()=>{ pauseClock(state); state.period+=1; q.textContent = `Periodo: ${state.period}`; toast('Nuovo periodo'); };
+  
+  // Bottone Undo: annulla l'ultima azione registrata
+  bUndo.onclick = async ()=>{ 
+    const undone = await undo(state); 
+    if(undone){ 
+      refreshEvents(); 
+      toast(`Azione annullata: ${undone.type}`); 
+    } else { 
+      toast('Nessuna azione da annullare'); 
+    } 
+  };
 
   // event rendering
   function refreshEvents(){
@@ -222,14 +239,17 @@ function renderLive(container,state,players){
   // selection flow: select on-court player for events or perform substitutions
   let selectedPlayer = null; // on-court selected for events or swap
   let benchSelected = null; // bench selected for swap
+  let currentPlayerIndex = -1; // indice del giocatore attualmente "focused" con le frecce
 
   function clearSelectionVisuals(){
     onwrap.querySelectorAll('.player').forEach(x=>x.classList.remove('player--selected'));
     benchwrap.querySelectorAll('.player').forEach(x=>x.classList.remove('player--selected'));
-    selectedPlayer = null; benchSelected = null;
+    selectedPlayer = null; 
+    benchSelected = null;
+    // Non resettiamo currentPlayerIndex qui per permettere la navigazione continua
   }
 
-  onwrap.querySelectorAll('.player').forEach(n=>{
+  onwrap.querySelectorAll('.player').forEach((n, index) => {
     n.addEventListener('click', async ()=>{
       const pid = n.dataset.id;
       // if a bench player was selected previously -> perform swap (benchSelected -> inId)
@@ -242,6 +262,7 @@ function renderLive(container,state,players){
       // otherwise select this on-court player for events
       clearSelectionVisuals();
       selectedPlayer = pid;
+      currentPlayerIndex = index; // Sincronizza l'indice per la navigazione con tastiera
       n.classList.add('player--selected');
     });
   });
@@ -261,6 +282,49 @@ function renderLive(container,state,players){
       else { clearSelectionVisuals(); benchSelected = pid; n.classList.add('player--selected'); }
     });
   });
+
+  // Sistema di navigazione con frecce per scorrere i giocatori del quintetto
+  // (currentPlayerIndex già dichiarato sopra con selectedPlayer e benchSelected)
+
+  function selectPlayerByIndex(index){
+    // Seleziona il giocatore in campo all'indice specificato
+    const playerCards = Array.from(onwrap.querySelectorAll('.player'));
+    if(index < 0 || index >= playerCards.length) return;
+    
+    const card = playerCards[index];
+    const pid = card.dataset.id;
+    
+    clearSelectionVisuals();
+    selectedPlayer = pid;
+    currentPlayerIndex = index;
+    card.classList.add('player--selected');
+    
+    // Aggiungi una classe temporanea per indicare che è stato selezionato via tastiera
+    card.classList.add('player--keyboard-focus');
+    setTimeout(() => card.classList.remove('player--keyboard-focus'), 300);
+  }
+
+  function navigatePlayer(direction){
+    // direction: 1 = avanti (destra/giù), -1 = indietro (sinistra/su)
+    const playerCards = Array.from(onwrap.querySelectorAll('.player'));
+    
+    if(playerCards.length === 0) return;
+    
+    // Se nessun giocatore è selezionato, inizia dal primo
+    if(currentPlayerIndex === -1){
+      selectPlayerByIndex(0);
+      return;
+    }
+    
+    // Calcola il nuovo indice con wrap-around
+    let newIndex = currentPlayerIndex + direction;
+    
+    // Wrap around: se vai oltre l'ultimo, torna al primo e viceversa
+    if(newIndex >= playerCards.length) newIndex = 0;
+    if(newIndex < 0) newIndex = playerCards.length - 1;
+    
+    selectPlayerByIndex(newIndex);
+  }
 
   // wire quick event buttons
   grid.querySelectorAll('button').forEach(b=>{
@@ -366,6 +430,50 @@ function renderLive(container,state,players){
         actionDescription = 'Palla rubata';
         break;
       
+      // Navigazione giocatori con frecce
+      case 'arrowdown':
+      case 'arrowright':
+        e.preventDefault();
+        navigatePlayer(1); // Vai al giocatore successivo
+        toast('Giocatore successivo');
+        return;
+      
+      case 'arrowup':
+      case 'arrowleft':
+        e.preventDefault();
+        navigatePlayer(-1); // Vai al giocatore precedente
+        toast('Giocatore precedente');
+        return;
+      
+      // Undo con tasto U o Ctrl+Z
+      case 'u':
+        e.preventDefault();
+        undo(state).then(undone => {
+          if(undone){ 
+            refreshEvents(); 
+            toast(`Azione annullata: ${undone.type}`); 
+          } else { 
+            toast('Nessuna azione da annullare'); 
+          }
+        });
+        return;
+      
+      case 'z':
+        // Ctrl+Z per Undo (standard)
+        if(e.ctrlKey || e.metaKey) {
+          e.preventDefault();
+          undo(state).then(undone => {
+            if(undone){ 
+              refreshEvents(); 
+              toast(`Azione annullata: ${undone.type}`); 
+            } else { 
+              toast('Nessuna azione da annullare'); 
+            }
+          });
+          return;
+        }
+        break;
+      
       // Controlli cronometro
       case ' ': // Spazio
         e.preventDefault();
@@ -433,37 +541,50 @@ function renderLive(container,state,players){
   // Mostra la guida shortcuts
   const shortcutsCard = el('div', 'card');
   shortcutsCard.innerHTML = `
-    <h4>Shortcuts da tastiera</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 12px;">
+    <h4>⌨️ Shortcuts da tastiera</h4>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; font-size: 12px;">
       <div><strong>Azioni giocatori:</strong></div>
       <div><strong>Controlli:</strong></div>
+      <div><strong>Navigazione:</strong></div>
       <div>1 = Tiro libero ✓</div>
       <div>SPAZIO = Play/Pausa</div>
+      <div>↑/← = Giocatore prec.</div>
       <div>2 = Tiro libero ✗</div>
       <div>S = Start cronometro</div>
+      <div>↓/→ = Giocatore succ.</div>
       <div>3 = 2 punti ✓</div>
       <div>P = Pausa cronometro</div>
+      <div>U = Annulla azione</div>
       <div>4 = 2 punti ✗</div>
       <div></div>
+      <div>CTRL+Z = Annulla azione</div>
       <div>5 = 3 punti ✓</div>
       <div><strong>Altri:</strong></div>
+      <div></div>
       <div>6 = 3 punti ✗</div>
       <div>ENTER = Aggiungi giocatore</div>
+      <div></div>
       <div>Q = Rimbalzo off.</div>
+      <div>(nella schermata setup)</div>
       <div></div>
       <div>W = Rimbalzo dif.</div>
       <div></div>
+      <div></div>
       <div>E = Assist</div>
+      <div></div>
       <div></div>
       <div>R = Palla persa</div>
       <div></div>
+      <div></div>
       <div>T = Fallo</div>
+      <div></div>
       <div></div>
       <div>Y = Palla rubata</div>
       <div></div>
+      <div></div>
     </div>
     <small style="color: #666; margin-top: 10px; display: block;">
-      * Seleziona prima un giocatore in campo per registrare le azioni
+      💡 <strong>Suggerimento:</strong> Usa le frecce ↑↓ per scorrere i giocatori in campo, poi premi i tasti numerici/lettere per registrare le azioni velocemente!
     </small>
   `;
   container.appendChild(shortcutsCard);

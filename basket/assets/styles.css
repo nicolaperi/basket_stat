@@ -32,9 +32,15 @@ body{margin:0;background:var(--bg);color:var(--text)}
 .col{display:flex;flex-direction:column;gap:8px}
 .players{display:flex;gap:8px;flex-wrap:wrap}
 .players--vertical{display:flex;flex-direction:column;align-items:flex-start}
-.player{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));padding:8px;border-radius:8px;min-width:140px;cursor:pointer;border:1px solid rgba(255,255,255,0.02)}
+.player{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));padding:8px;border-radius:8px;min-width:140px;cursor:pointer;border:1px solid rgba(255,255,255,0.02);transition:all 0.2s ease}
 .player--on{outline:2px solid var(--brand)}
 .player--selected{box-shadow:var(--glow-brand);border-color:var(--brand);background:var(--brand);color:var(--text)}
+.player--keyboard-focus{animation:keyboardPulse 0.3s ease;transform:scale(1.05)}
+@keyframes keyboardPulse{
+	0%{transform:scale(1);box-shadow:0 0 0 0 var(--brand)}
+	50%{transform:scale(1.05);box-shadow:0 0 20px 5px var(--brand)}
+	100%{transform:scale(1.05);box-shadow:var(--glow-brand)}
+}
 .clock{font-family:monospace;font-size:20px}
 .events{max-height:240px;overflow:auto}
 .event{display:flex;justify-content:space-between;padding:6px;border-bottom:1px dashed rgba(255,255,255,0.02)}
